@@ -1,0 +1,50 @@
+version: "3.2"
+services:
+  backend:
+    build: ./.docker/backend
+    container_name: carousel_backend
+    volumes:
+      - ./src/backend:/application:delegated
+      - ./.docker/backend:/root/.docker:delegated
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.passHostHeader=true"
+      - "traefik.frontend.rule=HostRegexp:api.carousel.local"
+      - "traefik.port=80"
+    expose:
+      - 80
+    networks:
+      carousel:
+        aliases:
+          - api.imagecarousel.local
+  frontend:
+    build: ./.docker/frontend
+    container_name: carousel_frontend
+    volumes:
+      - ./src/frontend:/application:delegated
+      - ./.docker/frontend:/root/.docker:delegated
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.passHostHeader=true"
+      - "traefik.frontend.rule=HostRegexp:imagecarousel.local"
+      - "traefik.port=80"
+    expose:
+      - 80
+    networks:
+      carousel:
+        aliases:
+          - imagecarousel.local
+  traefik:
+    container_name: carousel_traefik
+    image: traefik:1.7
+    command: "--configfile=/etc/traefik/traefik.toml"
+    volumes:
+      - ./traefik.toml:/etc/traefik/traefik.toml
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:80
+    networks:
+      - carousel
+
+networks:
+  carousel:
