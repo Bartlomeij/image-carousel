@@ -9,7 +9,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.frontend.passHostHeader=true"
-      - "traefik.frontend.rule=HostRegexp:api.carousel.local"
+      - "traefik.frontend.rule=HostRegexp:api.imagecarousel.local"
       - "traefik.port=80"
     expose:
       - 80
