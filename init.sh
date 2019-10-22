@@ -9,6 +9,3 @@ if ! src/backend; then
 fi
 
 echo "Done"
-
-docker-compose build
-docker-compose up -d
