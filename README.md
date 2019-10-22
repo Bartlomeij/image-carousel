@@ -32,7 +32,9 @@ Add line below to `/etc/hosts` file:
 ## Initialize project
 ```
 cd ~/Code/imagecarousel
-sh ./build.sh
+sh ./init.sh
+docker-compose build
+docker-compose up -d
 ```
 
 ## Open project
