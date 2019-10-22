@@ -12,5 +12,14 @@ docker-compose build
 docker-compose up -d
 
 # temp solution
+echo "Wait 5 minutes..."
+sleep 60
+echo "Wait 4 minutes..."
+sleep 60
+echo "Wait 3 minutes..."
+sleep 60
 echo "Wait 2 minutes..."
-sleep 120
+sleep 60
+echo "Wait 1 minutes..."
+sleep 60
+echo "Done."
