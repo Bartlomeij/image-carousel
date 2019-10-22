@@ -47,7 +47,6 @@ ENTRYPOINT sh /root/.docker/start.sh
 WORKDIR /application
 
 EXPOSE 80
-EXPOSE 443
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/nginx-php-fpm.conf"]
 

@@ -10,3 +10,7 @@ fi
 
 docker-compose build
 docker-compose up -d
+
+# temp solution
+echo "Wait 2 minutes..."
+sleep 120
